@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "corsheaders",
     "authentication",
-    "rest_framework_simplejwt",
     "rest_framework_simplejwt.token_blacklist",
+    "drf_yasg",
 ]
 
 MIDDLEWARE = [
@@ -135,7 +135,9 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ],
-    "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.IsAuthenticated",
-    ],
+}
+
+SWAGGER_SETTINGS = {
+    "DEFAULT_INFO": "import.path.to.urls.api_info",
+    "SECURITY_DEFINITIONS": {"Bearer": {"type": "apiKey", "in": "header", "name": "Authorization"}},
 }
