@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "authentication",
     "rest_framework_simplejwt.token_blacklist",
     "drf_yasg",
+    "accounts.apps.AccountsConfig",
 ]
 
 MIDDLEWARE = [
