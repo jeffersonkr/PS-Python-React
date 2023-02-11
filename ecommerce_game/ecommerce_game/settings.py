@@ -129,14 +129,20 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# CORS
 CORS_ORIGIN_ALLOW_ALL = True
 
+# REST_FRAMEWOKR CONFIG
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ],
 }
 
+# DEFAULT USER MODEL
+AUTH_USER_MODEL = "accounts.User"
+
+# OPENAI SWAGGER SETTINGS
 SWAGGER_SETTINGS = {
     "DEFAULT_INFO": "import.path.to.urls.api_info",
     "SECURITY_DEFINITIONS": {"Bearer": {"type": "apiKey", "in": "header", "name": "Authorization"}},
