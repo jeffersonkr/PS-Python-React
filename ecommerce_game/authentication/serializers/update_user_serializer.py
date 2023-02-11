@@ -1,6 +1,7 @@
-from django.contrib.auth.models import User
-from drf_yasg.utils import swagger_auto_schema
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
+
+User = get_user_model()
 
 
 class UpdateUserSerializer(serializers.ModelSerializer):
