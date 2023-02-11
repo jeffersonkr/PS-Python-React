@@ -9,11 +9,7 @@ class UpdateUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ("username", "first_name", "last_name", "email")
-        extra_kwargs = {
-            "first_name": {"required": True},
-            "last_name": {"required": True},
-        }
+        fields = ("username", "email", "full_name", "bio", "birth_date")
 
     def validate_email(self, value):
         user = self.context["request"].user
@@ -28,10 +24,11 @@ class UpdateUserSerializer(serializers.ModelSerializer):
         return value
 
     def update(self, instance, validated_data):
-        instance.first_name = validated_data["first_name"]
-        instance.last_name = validated_data["last_name"]
-        instance.email = validated_data["email"]
-        instance.username = validated_data["username"]
+        instance.full_name = validated_data.get("full_name", instance.full_name)
+        instance.bio = validated_data.get("bio", instance.bio)
+        instance.birth_date = validated_data.get("birth_date", instance.birth_date)
+        instance.username = validated_data.get("username", instance.username)
+        instance.email = validated_data.get("email", instance.email)
 
         instance.save()
 
