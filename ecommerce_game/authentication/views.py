@@ -1,11 +1,6 @@
-from authentication.serializers import (
-    ChangePasswordSerializer,
-    MyTokenObtainPairSerializer,
-    RegisterSerializer,
-    UpdateUserSerializer,
-)
+from authentication.serializers import MyTokenObtainPairSerializer
 from django.contrib.auth import get_user_model
-from rest_framework import generics, status
+from rest_framework import status
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -22,24 +17,6 @@ User = get_user_model()
 class MyObtainTokenPairView(TokenObtainPairView):
     permission_classes = (AllowAny,)
     serializer_class = MyTokenObtainPairSerializer
-
-
-class RegisterView(generics.CreateAPIView):
-    queryset = User.objects.all()
-    permission_classes = (AllowAny,)
-    serializer_class = RegisterSerializer
-
-
-class ChangePasswordView(generics.UpdateAPIView):
-    queryset = User.objects.all()
-    permission_classes = (IsAuthenticated,)
-    serializer_class = ChangePasswordSerializer
-
-
-class UpdateProfileView(generics.UpdateAPIView):
-    queryset = User.objects.all()
-    permission_classes = (IsAuthenticated,)
-    serializer_class = UpdateUserSerializer
 
 
 class LogoutView(APIView):
