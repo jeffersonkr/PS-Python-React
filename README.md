@@ -1,12 +1,18 @@
-# Game ecommerce API
+# Game ecommerce API:
 Ecommerce api for games
 
-## Version: v1
+-----------------------------------------------------------------
+## HOW TO START:
 
-**Contact information:**  
-contato@teste.local  
+1. Clone this repository.
+    - `git clone git@github.com:jeffersonkr/PS-Python-React.git`
 
-**License:** BSD License
+2. In the terminal go to the directory of repository.
+3. Run docker composer
+    - `docker-compose up --build`
+    
+-----------------------------------------------------------------
+## API Routes:
 
 ### Security
 **Bearer**  
