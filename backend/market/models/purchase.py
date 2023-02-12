@@ -1,8 +1,12 @@
 from django.db import models
+from django.contrib.auth import get_user_model
+
+
+User = get_user_model()
 
 
 class Purchase(models.Model):
-    customer = models.CharField("customer", max_length=100)
+    customer = models.ForeignKey(User, related_name="user", on_delete=models.DO_NOTHING)
     created = models.DateTimeField("created", auto_now_add=True, auto_now=False)
 
     class Meta:
