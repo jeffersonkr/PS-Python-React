@@ -1,38 +1,217 @@
-# Avaliação Python + React
+# Game ecommerce API
+Ecommerce api for games
 
-## Descrição
+## Version: v1
 
-O teste consiste em construir uma API HTTP de um pseudo e-commerce de games utilizando Python (preferencialmente o framework Django), e construir a interface do e-commerce utilizando React Web. 
+**Contact information:**  
+contato@teste.local  
 
-A lista de produtos está disponível no arquivo products.json, mas sinta-se livre para adicionar outros produtos.
+**License:** BSD License
 
-As imagens estão disponíveis no arquivo assets.zip
+### Security
+**Bearer**  
 
-## Requisitos Funcionais
+| apiKey | *API Key* |
+| ------ | --------- |
+| In | header |
+| Name | Authorization |
 
-- O usuário deverá fazer login
-- O usuário poderá adicionar e remover produtos do carrinho.
-- O usuário poderá ordenar os produtos por preço, popularidade (score) e ordem alfabética. A filtragem deve ser realizada pela API.
-- Os valores exibidos no checkout (frete, subtotal e total) devem ser calculados dinamicamente conforme o usuário seleciona ou remove produtos.
-- A cada produto adicionado, deve-se somar R$ 10,00 ao frete.
-- Quando o valor dos produtos adicionados ao carrinho for igual ou superior a R$ 250,00, o frete é grátis.
-- O usuário pode realizar checkout de seu carrinho de compras. 
-- O usuário pode consultar os pedidos feitos.
+### /accounts/change_password/{id}/
 
-## Requisitos Não Funcionais
+#### PUT
+##### Description
 
-- Deverá ser documentado no [README.md](./README.md) como executar/compilar/empacotar o projeto e quais os endpoints solicitados nos requisitos acima. Para esse fim podem ser utilizadas ferramentas de containerização e automatização de builds.
-- Utilizar o banco de dados Postgres.
-- Para CRUD das entidades no banco de dados, utilizar preferencialmente migrations.
+##### Parameters
 
-## O que iremos avaliar
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| id | path | A UUID string identifying this user. | Yes | string (uuid) |
+| data | body |  | Yes | [ChangePassword](#changepassword) |
 
-Levaremos em conta os seguintes critérios:
+##### Responses
 
-- Cumprimento dos requisitos
-- Qualidade do projeto da API
-- Qualidade do layout e fluidez da UX
-- Organização do código e boas práticas
-- Domínio das linguagens, bibliotecas e ferramentas utilizadas
-- Organização dos commits
-- Escrita e cobertura de testes
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 |  | [ChangePassword](#changepassword) |
+
+#### PATCH
+##### Description
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| id | path | A UUID string identifying this user. | Yes | string (uuid) |
+| data | body |  | Yes | [ChangePassword](#changepassword) |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 |  | [ChangePassword](#changepassword) |
+
+### /accounts/register/
+
+#### POST
+##### Description
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| data | body |  | Yes | [Register](#register) |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 201 |  | [Register](#register) |
+
+### /accounts/update_profile/{id}/
+
+#### PUT
+##### Description
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| id | path | A UUID string identifying this user. | Yes | string (uuid) |
+| data | body |  | Yes | [UpdateUser](#updateuser) |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 |  | [UpdateUser](#updateuser) |
+
+#### PATCH
+##### Description
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| id | path | A UUID string identifying this user. | Yes | string (uuid) |
+| data | body |  | Yes | [UpdateUser](#updateuser) |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 |  | [UpdateUser](#updateuser) |
+
+### /authentication/login/
+
+#### POST
+##### Description
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| data | body |  | Yes | [MyTokenObtainPair](#mytokenobtainpair) |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 201 |  | [MyTokenObtainPair](#mytokenobtainpair) |
+
+### /authentication/login/refresh/
+
+#### POST
+##### Description
+
+Takes a refresh type JSON web token and returns an access type JSON web
+token if the refresh token is valid.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| data | body |  | Yes | [TokenRefresh](#tokenrefresh) |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 201 |  | [TokenRefresh](#tokenrefresh) |
+
+### /authentication/logout/
+
+#### POST
+##### Description
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 201 |  |
+
+### /authentication/logout_all/
+
+#### POST
+##### Description
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 201 |  |
+
+### Models
+
+#### ChangePassword
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| old_password | string |  | Yes |
+| password | string |  | Yes |
+| password2 | string |  | Yes |
+
+#### Register
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| username | string |  | Yes |
+| password | string |  | Yes |
+| password2 | string |  | Yes |
+| email | string (email) |  | Yes |
+| full_name | string |  | Yes |
+| bio | string |  | No |
+| birth_date | date |  | No |
+
+#### UpdateUser
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| username | string |  | Yes |
+| email | string (email) |  | Yes |
+| full_name | string |  | No |
+| bio | string |  | No |
+| birth_date | date |  | No |
+
+#### MyTokenObtainPair
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| email | string |  | Yes |
+| password | string |  | Yes |
+
+#### TokenRefresh
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| refresh | string |  | Yes |
+| access | string |  | No |
