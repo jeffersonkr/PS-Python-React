@@ -34,3 +34,13 @@ class CartSerializer(serializers.Serializer):
         cart.save()
 
         return cart
+
+    def update(self, instance, validated_data):
+        instance.purchase = validated_data.get("purchase", instance.purchase)
+        instance.product = validated_data.get("product", instance.product)
+        instance.quantity = validated_data.get("quantity", instance.quantity)
+        instance.price = validated_data.get("price", instance.price)
+
+        instance.save()
+
+        return instance
