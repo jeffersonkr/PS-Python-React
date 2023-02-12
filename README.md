@@ -24,6 +24,22 @@ Ecommerce api for games
 
 ### /accounts/change_password/{id}/
 
+#### PUT
+##### Description
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| id | path | A UUID string identifying this user. | Yes | string (uuid) |
+| data | body |  | Yes | [ChangePassword](#changepassword) |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 |  | [ChangePassword](#changepassword) |
+
 #### PATCH
 ##### Description
 Route to change password.
@@ -167,6 +183,129 @@ Route to logout from all devices.
 | ---- | ----------- |
 | 201 |  |
 
+### /market/cart/
+
+#### POST
+##### Description
+Route to add a cart.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| data | body |  | Yes | [Cart](#cart) |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 201 |  | [Cart](#cart) |
+
+### /market/cart/{id}
+
+#### GET
+##### Description
+Route to get a cart
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| id | path | A unique integer value identifying this cart. | Yes | integer |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 |  | [Cart](#cart) |
+
+#### PUT
+##### Description
+route to update all data of a cart.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| id | path | A unique integer value identifying this cart. | Yes | integer |
+| data | body |  | Yes | [Cart](#cart) |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 |  | [Cart](#cart) |
+
+#### PATCH
+##### Description
+Route to update a cart.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| id | path | A unique integer value identifying this cart. | Yes | integer |
+| data | body |  | Yes | [Cart](#cart) |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 |  | [Cart](#cart) |
+
+### /market/product/
+
+#### GET
+##### Description
+Route to get all products.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 |  | [ [Product](#product) ] |
+
+### /market/purchase/
+
+#### POST
+##### Description
+Route to create a order.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| data | body |  | Yes | [Purchase](#purchase) |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 201 |  | [Purchase](#purchase) |
+
+### /market/purchase/{id}
+
+#### GET
+##### Description
+Route to get specific order
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| id | path | A unique integer value identifying this purchase. | Yes | integer |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 |  | [Purchase](#purchase) |
+
 ### Models
 
 #### ChangePassword
@@ -212,3 +351,30 @@ Route to logout from all devices.
 | ---- | ---- | ----------- | -------- |
 | refresh | string |  | Yes |
 | access | string |  | No |
+
+#### Cart
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| purchase | integer |  | Yes |
+| product | integer |  | Yes |
+| quantity | integer |  | Yes |
+| price | string (decimal) |  | Yes |
+
+#### Product
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| id | integer |  | No |
+| name | string |  | Yes |
+| price | string (decimal) |  | Yes |
+| score | integer |  | Yes |
+| image | string |  | No |
+
+#### Purchase
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| id | integer |  | No |
+| customer | string (uuid) |  | Yes |
+| created | dateTime |  | Yes |
