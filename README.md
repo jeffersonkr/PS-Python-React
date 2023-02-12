@@ -10,7 +10,7 @@ Ecommerce api for games
 2. In the terminal go to the directory of repository.
 3. Run docker composer
     - `docker-compose up --build`
-    
+
 -----------------------------------------------------------------
 ## API Routes:
 
@@ -24,24 +24,9 @@ Ecommerce api for games
 
 ### /accounts/change_password/{id}/
 
-#### PUT
-##### Description
-
-##### Parameters
-
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ------ |
-| id | path | A UUID string identifying this user. | Yes | string (uuid) |
-| data | body |  | Yes | [ChangePassword](#changepassword) |
-
-##### Responses
-
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 |  | [ChangePassword](#changepassword) |
-
 #### PATCH
 ##### Description
+Route to change password.
 
 ##### Parameters
 
@@ -60,6 +45,7 @@ Ecommerce api for games
 
 #### POST
 ##### Description
+Route to register an customer.
 
 ##### Parameters
 
@@ -77,6 +63,7 @@ Ecommerce api for games
 
 #### PUT
 ##### Description
+Route to all update data of an user.
 
 ##### Parameters
 
@@ -93,6 +80,7 @@ Ecommerce api for games
 
 #### PATCH
 ##### Description
+Route to update specific data of an user.
 
 ##### Parameters
 
@@ -111,6 +99,7 @@ Ecommerce api for games
 
 #### POST
 ##### Description
+Route to login an get token.
 
 ##### Parameters
 
@@ -148,6 +137,7 @@ token if the refresh token is valid.
 
 #### POST
 ##### Description
+Route do logout.
 
 ##### Parameters
 
@@ -164,6 +154,7 @@ token if the refresh token is valid.
 
 #### POST
 ##### Description
+Route to logout from all devices.
 
 ##### Parameters
 
