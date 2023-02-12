@@ -1,4 +1,4 @@
-version: '3'
+version: '3.9'
 
 services:
   db:
@@ -7,6 +7,21 @@ services:
       POSTGRES_DB: ecommerce_game
       POSTGRES_USER: teste
       POSTGRES_PASSWORD: teste
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "pg_isready",
+          "-U",
+          "teste",
+          "-d",
+          "ecommerce_game"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
   backend:
     build: ./backend
     command: [ "sh", "entrypoint.sh" ]
@@ -15,9 +30,10 @@ services:
     ports:
       - 8000:8000
     depends_on:
-      - db
-    environment:
-      - DATABASE_URL=postgres://teste:teste@db:5432/mydatabase
+      db:
+        condition: service_healthy
+    env_file:
+      - .envfile
   frontend:
     build: ./frontend
     command: npm start
