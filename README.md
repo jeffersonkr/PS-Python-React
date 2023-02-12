@@ -8,7 +8,7 @@ Ecommerce api for games
     - `git clone git@github.com:jeffersonkr/PS-Python-React.git`
 
 2. In the terminal go to the directory of repository.
-3. Run docker composer
+3. Run docker composer (Docker Compose version v2.16.0)
     - `docker-compose up --build`
 
 -----------------------------------------------------------------
