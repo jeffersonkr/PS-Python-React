@@ -19,7 +19,19 @@ class PurchaseView(generics.CreateAPIView):
     serializer_class = PurchaseSerializer
 
 
-class CartView(generics.CreateAPIView):
+class GetPurchaseView(generics.RetrieveAPIView):
+    queryset = Purchase.objects.all()
+    permission_classes = (IsAuthenticated,)
+    serializer_class = PurchaseSerializer
+
+
+class CartCreateView(generics.CreateAPIView):
+    queryset = Cart.objects.all()
+    permission_classes = (IsAuthenticated,)
+    serializer_class = CartSerializer
+
+
+class CartView(generics.RetrieveUpdateAPIView):
     queryset = Cart.objects.all()
     permission_classes = (IsAuthenticated,)
     serializer_class = CartSerializer
