@@ -2,6 +2,9 @@
 
 Ecommerce api for games
 
+Modelo:
+![tabelas](mod.jpg)
+
 -----------------------------------------------------------------
 ## HOW TO START:
 
