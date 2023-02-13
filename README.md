@@ -18,9 +18,9 @@ Modelo:
 -----------------------------------------------------------------
 ## HOW TO TEST:
 
-1. with project running, get into backend container.
-2. Run pytest
-    - `pytest`
+1. start project
+2. project root folder execute bellow command.
+    - `docker-compose exec backend pytest`
 
 -----------------------------------------------------------------
 ## DOCUMENTATIONS:
