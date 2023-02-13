@@ -4,7 +4,7 @@ from rest_framework.test import APIClient
 from django.contrib.auth import get_user_model
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from market.models import Purchase
+from market.models import Purchase, Cart, Product
 
 User = get_user_model()
 
@@ -48,4 +48,18 @@ def purchase(user):
             "customer": user,
             "created": "2023-02-13T01:29:26.579Z",
         }
+    )
+
+
+@pytest.fixture()
+def product():
+    yield Product.objects.create(
+        **{"name": "produto teste", "price": 50.50, "score": 200, "image": "teste.png"}
+    )
+
+
+@pytest.fixture()
+def cart(purchase, product):
+    yield Cart.objects.create(
+        **{"purchase": purchase, "product": product, "quantity": 1, "price": 15.00}
     )
