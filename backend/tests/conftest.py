@@ -1,5 +1,5 @@
 import pytest
-
+from django.urls import reverse
 from rest_framework.test import APIClient
 from django.contrib.auth import get_user_model
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -9,12 +9,12 @@ User = get_user_model()
 
 @pytest.fixture
 def api_client():
-    return APIClient()
+    yield APIClient()
 
 
 @pytest.fixture()
 def user():
-    return User.objects.create_user(
+    yield User.objects.create_user(
         **{
             "username": "test_user",
             "password": "test123@",
@@ -29,3 +29,11 @@ def api_client_logged_in(user):
     refresh = RefreshToken.for_user(user)
     client.credentials(HTTP_AUTHORIZATION=f"Bearer {refresh.access_token}")
     yield client
+
+
+@pytest.fixture()
+def user_credentials(api_client, user):
+    url = reverse("token_obtain_pair")
+    data = {"email": user.email, "password": "test123@"}
+    response = api_client.post(url, data, format="json")
+    yield response.json()
