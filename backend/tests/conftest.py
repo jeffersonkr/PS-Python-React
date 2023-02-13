@@ -4,6 +4,8 @@ from rest_framework.test import APIClient
 from django.contrib.auth import get_user_model
 from rest_framework_simplejwt.tokens import RefreshToken
 
+from market.models import Purchase
+
 User = get_user_model()
 
 
@@ -37,3 +39,13 @@ def user_credentials(api_client, user):
     data = {"email": user.email, "password": "test123@"}
     response = api_client.post(url, data, format="json")
     yield response.json()
+
+
+@pytest.fixture()
+def purchase(user):
+    yield Purchase.objects.create(
+        **{
+            "customer": user,
+            "created": "2023-02-13T01:29:26.579Z",
+        }
+    )
