@@ -90,7 +90,7 @@ DATABASES = {
         "NAME": os.environ.get("POSTGRES_DB", "ecommerce_game"),
         "USER": os.environ.get("POSTGRES_USER", "teste"),
         "PASSWORD": os.environ.get("POSTGRES_PASSWORD", "teste"),
-        "HOST": os.environ.get("POSTGRES_HOST", "db"),
+        "HOST": os.environ.get("POSTGRES_HOST", "localhost"),
         "PORT": os.environ.get("POSTGRES_PORT", "5432"),
     }
 }
