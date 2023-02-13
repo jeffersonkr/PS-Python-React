@@ -142,6 +142,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 # REST_FRAMEWOKR CONFIG
 REST_FRAMEWORK = {
+    "COERCE_DECIMAL_TO_STRING": False,
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ],
