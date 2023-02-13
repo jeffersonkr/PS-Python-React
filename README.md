@@ -1,4 +1,5 @@
 # Game ecommerce API:
+
 Ecommerce api for games
 
 -----------------------------------------------------------------
@@ -17,6 +18,12 @@ Ecommerce api for games
 1. with project running, get into backend container.
 2. Run pytest
     - `pytest`
+
+-----------------------------------------------------------------
+## DOCUMENTATIONS:
+
+SWAGGER: `localhost:8000`
+REDOC: `localhost:8000/redoc`
 
 -----------------------------------------------------------------
 ## API Routes:
