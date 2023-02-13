@@ -12,6 +12,13 @@ Ecommerce api for games
     - `docker-compose up --build`
 
 -----------------------------------------------------------------
+## HOW TO TEST:
+
+1. with project running, get into backend container.
+2. Run pytest
+    - `pytest`
+
+-----------------------------------------------------------------
 ## API Routes:
 
 ### Security
