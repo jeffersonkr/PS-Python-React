@@ -173,7 +173,7 @@ Route do logout.
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ------ |
-
+| data | body |  | Yes | [Logout](#logout) |
 ##### Responses
 
 | Code | Description |
@@ -358,6 +358,11 @@ Route to get specific order
 | ---- | ---- | ----------- | -------- |
 | email | string |  | Yes |
 | password | string |  | Yes |
+
+#### Logout
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| refresh_token | string |  | Yes |
 
 #### TokenRefresh
 
